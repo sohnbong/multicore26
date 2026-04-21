@@ -116,5 +116,53 @@
 		<li> <a href="./MassiveVirtualThreadsExample.java">MassiveVirtualThreadsExample.java</a></li>  
 	</ul>
 	<li> <a href="./multicore_handout4.pdf">Handout: Important Concurrency Concepts</a> 
-		
+	<li> <a href="./multicore05-2-updated.pdf">lecture 5-2: C++ Threads (updated on 4/30/2024)</a>
+	<ul>
+		<li> Basic Sample Codes: 
+			<a href="./cpp_src/thread_create_ex1.cpp">thread_create_ex1.cpp</a>,
+			<a href="./cpp_src/count_nolock.cpp">count_nolock.cpp</a>,
+			<a href="./cpp_src/count_lock.cpp">count_lock.cpp</a>,
+			<a href="./cpp_src/count_atomic.cpp">count_atomic.cpp</a>
+		<li> <a href="https://www.programiz.com/cpp-programming/functors">C++ Functor (Function Object)</a>
+		<li> Parallel STL sample C++ code (compilable in Visual Studio 2022, [<a href="./cpp_src/vis2022_setting.png">use ISO C++17 Standard</a>]): <a href="./cpp_src/psort.cpp">psort.cpp</a>, <a href="./cpp_src/ptransform.cpp">ptransform.cpp</a>
+		<ul>
+			https://github.com/sohnbong/multicore26/new/main<li> output: <a href="cpp_src/psort_output.png">parallel sort output</a> , <a href="cpp_src/ptransform_output.png">parallel transform output</a>
+			<li> <a href="https://en.cppreference.com/w/cpp/algorithm"> C++ Parallel STL Algorithms</a>
+			<li> <a href="https://www.intel.com/content/www/us/en/developer/articles/guide/get-started-with-parallel-stl.html">Parallel STL was originally from Intel TBB (Threading Building Blocks)</a>
+		</ul>
+	</ul>
+	<li> Lecture 6: OpenMP
+	<ul>
+		<li> <a href="./brief_openmp.pdf"> Brief Introduction to OpenMP </a>, (Slides from Prof. Luke Tierney, Univ. of Iowa)
+		<li> <a href="./intro_openmp.pdf"> Introduction to OpenMP</a> (<a href="./intro_openmp_summary.pdf">Summary Version</a>) (Slides from Ruud van der Pas, Sun Microsystems)
+			<li> include omp.h to use OpenMP library in C/C++ programming
+			<li> In visual studio 2008 or above, you can use OpenMP by <a href="./visualstudio_openmp.jpg">(In menu: Project-Properties) setting "OpenMP support" to Yes</a>.
+			<li> In UNIX/LINUX/cygwin environment, run gcc with the -fopenmp flag: 
+				<ul>
+				<li> gcc -fopenmp ex1.c
+				<li> Execute a.out. If you forget -fopenmp, then all OpenMP directives are ignored.
+				</ul>
+			<li> In MacOS (Intel CPU): <a href="https://open-box.readthedocs.io/en/latest/installation/openmp_macos.html">this link</a> might help for OpenMP compiliation.
+			<li> Practice : <a href="./pi_computation.pptx">pi computation</a>
+				<ul>
+				<li> (exercise 1) parallelize <a href="./src/omp_pi.c">omp_pi.c</a> using OpenMP
+				<li> (exercise 2) parallelize <a href="./src/omp_pi.c">omp_pi.c</a> using pthread (sample pthread code: <a href="./src/omp_pi_pthread.c">omp_pi_pthread.c</a>)
+				</ul>
+				<li> OpenMP source files : 
+				<ul>
+<li> OpenMP basics: <a href="./src/omp_ex1.c">omp_ex1.c</a>, <a href="./src/omp_ex2.c">omp_ex2.c</a>, <a href="./src/omp_ex2-2.c">omp_ex2-2.c</a>, <a href="./src/omp_ex2-3.c">omp_ex2-3.c</a>
+<li> Matrix calculation:<a href="./src/omp_ex3.c">omp_ex3.c</a>
+<li> critical section: <a href="./src/omp_critical.c">omp_critical.c</a>
+<li> reduction: <a href="./src/omp_reduction.c">omp_reduction.c</a>
+<li> private/shared variables: <a href="./src/omp_mat_vec.c">omp_mat_vec.c</a>
+<li> schedule, time measurement: <a href="./src/omp_schedule.c">omp_schedule.c</a>,
+<li> SECTIONS (example code:<a href="./src/omp_section.c">omp_section.c)</a>: individual code blocks are distributed over threads 
+			</ul>
+	<li> Merge Sort (<a href="./src/serial_mergesort.c">serial_mergesort.c</a> )
+		<ul>
+		<li>  sequential merge Sort (<a href="./src/serial_mergesort.c">serial_mergesort.c</a> )
+		<li>  parallel merge Sort (<a href="./src/parallel_mergesort.c">parallel_mergesort.c</a> )
+		<li> <a href="./mergesort.pdf">merge sort algorithm</a>
+		</ul>
+	</ul>	
 </ul>
