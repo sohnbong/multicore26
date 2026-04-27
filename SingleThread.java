@@ -6,7 +6,7 @@ public class SingleThread {
 
     public static void main(String[] args) throws Exception {
         if (args.length < 1) {
-            System.out.println("Usage: java WebPageAnalyzerSingleThread <url_file>");
+            System.out.println("Usage: java SingleThread <url_file>");
             return;
         }
 
