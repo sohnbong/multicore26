@@ -1,0 +1,37 @@
+6. threadprivate , copyin
+
+* threadprivate: is used to create thread-local copies of global or static variables.
+- persistence: threadprivate variables keep their values between different parallel regions.
+- global scope: threadprivate variables should be global (or static) variable.
+- initialization: use copyin
+
+#include <omp.h>
+
+int counter; // Global variable
+#pragma omp threadprivate(counter)
+
+int main() {
+    // Each thread gets its own 'counter' that persists
+    #pragma omp parallel
+    {
+        counter = omp_get_thread_num();
+    }
+}
+
+* copyin: copies the initial value of a threadprivate variable from the master thread to all worker threads at the start of a parallel region.
+- threadprivate variables are not shared
+- Each thread has its own separate copy
+- These copies do not automatically get the same initial value
+
+#pragma omp parallel copyin(x)
+Take the value of x from the master thread
+Copy it to each thread’s private copy of x
+This happens at the start of the parallel region
+
+int x = 10;
+#pragma omp threadprivate(x)
+
+#pragma omp parallel copyin(x)
+{
+   printf("Thread %d: x = %d\n", omp_get_thread_num(), x);
+}
