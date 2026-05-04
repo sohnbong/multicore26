@@ -1,0 +1,29 @@
+4. fork-join model: a program transitions from a single-threaded execution to a multi-threaded one and back again.
+
+Implicit Barrier: At the end of every parallel region, there is a "Join" that acts as a wall. No code after the parallel block will run until every thread has crossed that wall.
+
+The Thread Pool: Creating and destroying threads is expensive for the CPU. To save time, OpenMP often keeps worker threads "alive" in a hidden pool so they can be quickly reused for the next "Fork" instead of being created from scratch.
+
+Data Environment: During the "Fork," the model must decide which variables are Shared (seen by everyone) and which are Private (unique copies for each thread).
+
+The Fork-Join approach is highly effective for Incremental Parallelism.
+You don't have to rewrite your entire program to be parallel. You can keep 90% of your code sequential and only "Fork" at the specific "Bulky Loops" or heavy computational sections that actually need the extra power. This makes it much easier to debug and maintain than models where the entire program is constantly multi-threaded.
+
+
+#pragma omp parallel
+{
+}
+
+Single Thread (master thread)
+    |
+    |  (fork)
+    v
+Multiple Threads (master+workers threads)
+|   |   |   |
+|   |   |   |   (parallel work)
+|   |   |   |
+    v
+    |  (join)
+    |
+Single Thread
+
