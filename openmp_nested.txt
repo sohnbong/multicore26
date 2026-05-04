@@ -1,0 +1,45 @@
+5. nested parallelism
+You can place a parallel region inside another parallel region
+
+#pragma omp parallel
+{
+   // parallel
+
+   #pragma omp parallel
+   {
+       // parallel (nested)
+   }
+}
+
+Some implementations will create new threads for the inner region (true nested parallelism)
+Others will execute the inner region with only one thread (no real parallelism)
+- number of thread may increase exponentially
+- overhead for thread creation
+- therefore, nested parallelism is turned off by default
+
+* turning on nested parallelism (deprecated)
+omp_set_nested(1);
+or
+OMP_NESTED=TRUE
+
+* instead, you can use
+omp_set_max_active_levels(2);
+OMP_MAX_ACTIVE_LEVELS=2
+
+* collapse: a performance optimization tool used with nested loops. It instructs the compiler to take multiple nested loops and "flatten" them into a single, large iteration space before distributing the work to threads.
+- (better load balancing) creates a much larger pool of iterations.
+- (simplicity) you don't need to convert 2D or 3D array into 1D array
+
+#pragma omp parallel for
+for (int i = 0; i < 4; i++) {       // Only 4 iterations
+    for (int j = 0; j < 100; j++) { // 100 iterations each
+        // Work here
+    }
+}
+#pragma omp parallel for collapse(2)
+for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 100; j++) {
+        // The compiler treats this as one loop of 400 iterations
+        // All 8 threads can now take 50 iterations each.
+    }
+}
