@@ -1,0 +1,34 @@
+2. nowait
+
+implicit synchronization may decrease performance
+
+#pragma omp parallel
+{
+    x=10;
+    #pragma omp for
+    for (int i = 0; i < N; i++) {
+        heavy_work(i);
+    }
+    y=20;
+    #pragma omp for
+    for (int i = 0; i < N; i++) {
+        light_work(i);
+    }
+}
+
+#pragma omp parallel
+{
+    x=10;
+    #pragma omp for nowait
+    for (int i = 0; i < N; i++) {
+        heavy_work(i);
+    }
+    y=20;
+    #pragma omp for
+    for (int i = 0; i < N; i++) {
+        light_work(i);
+    }
+}
+
+nowait improves CPU utilization and decreases idle time.
+Be careful of dependency(previous work, next work) when using nowait.
