@@ -1,0 +1,38 @@
+3. atomic vs critical (use reduction if possible)
+
+atomic: atomically executed for a single operation (restricted but low overhead)
+
+#pragma omp atomic
+x += 1;
+
+critical: critical section for a block of code (flexible but high overhead, reduced concurrency)
+
+#pragma omp critical
+{
+x += 1;
+y += 2;
+printf("%d\n", x);
+}
+
+use reduction if possible
+
+sum = 0;
+
+#pragma omp parallel for
+for (int i = 0; i < N; i++) {
+   sum += A[i];   // race condition 발생!
+}
+
+#pragma omp parallel for
+for (int i = 0; i < N; i++) {
+   #pragma omp atomic
+   sum += A[i];
+}
+
+#pragma omp parallel for reduction(+:sum)
+for (int i = 0; i < N; i++) {
+   sum += A[i];
+}
+
+Why is reduction faster (higher performance)?
+
