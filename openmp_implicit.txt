@@ -1,0 +1,24 @@
+1. implicit vs explicit synchronization
+
+implicit synchronization: OpenMP automatically inserts synchronization points without the programmer explicitly writing them.
+
+#pragma omp parallel
+{
+    #pragma omp for
+    for (int i = 0; i < N; i++) {
+        A[i] = B[i] + C[i];
+    }  // ← implicit barrier here (unless nowait is used)
+
+    #pragma omp single
+    {
+        do_something();
+    }
+    // ← implicit barrier here (unless nowait is used)
+    x=10;
+}
+
+explicit synchronization
+
+#pragma omp barrier
+#pragma omp critical
+#pragma omp atomic
