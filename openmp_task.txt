@@ -1,0 +1,114 @@
+* OpenMP task 
+  - a way to express irregular or dynamic parallelism.
+  - task means “This block of code can run independently in parallel.”
+
+* When a thread encounters a "#pragma omp task", it:
+  - creates a task object
+  - places it into a task queue
+  - any available thread may execute it
+
+* They are especially useful for:
+  - Recursive algorithms
+  - Tree/graph traversal
+  - Divide-and-conquer algorithms
+  - Producer-consumer patterns
+  - Workloads where execution time is unpredictable
+
+
+* Basic Syntax
+  - The most common way to launch tasks is within a single region inside a parallel region. 
+  - One thread generates the tasks, while all threads in the team are available to execute them.
+
+#pragma omp parallel // creates a team of threads
+{
+    #pragma omp single // only one thread generates tasks
+    {
+        #pragma omp task // creates independent work items
+        {
+            // Code for Task A
+        }
+
+        #pragma omp task // creates independent work items
+        {
+            // Code for Task B
+        }
+    } // Implicit taskwait occurs here at the end of the single/parallel block
+}
+
+* Task creation and execution
+
+#pragma omp task
+foo();
+
+The encountering thread only creates the task. Another thread may run foo().
+
+* Nested tasks
+  - tasks can create more tasks. This is why they work well for recursion.
+
+* taskwait
+
+#pragma omp task
+work1();
+
+#pragma omp task
+work2();
+
+#pragma omp taskwait
+
+Execution continues only after all child tasks are complete.
+
+
+* Task dependencies
+This is the most sophisticated part of the task model. 
+It allows you to define a Directed Acyclic Graph (DAG: no cycle, one direction) of execution based on data flow rather than explicit barriers.
+
+  - in: The task depends on a value produced by another task.
+  - out: The task produces a value that others might depend on.
+  - inout: The task both consumes and updates a value.
+
+#pragma omp task depend(out: x)
+generate_data(&x);
+
+#pragma omp task depend(in: x)
+process_data(x);
+
+In the example above, process_data will not start until generate_data is finished, even if there are idle threads available.
+
+
+* Summary
+
+parallel region
+    |
+single thread creates tasks
+    |
+tasks placed in queue
+    |
+available threads execute tasks dynamically
+    |
+taskwait synchronizes
+
+
+* Example
+
+int fib(int n) {
+    int x, y;
+
+    if (n < 2)
+        return n;
+
+    #pragma omp task shared(x)
+    x = fib(n - 1);
+
+    #pragma omp task shared(y)
+    y = fib(n - 2);
+
+    #pragma omp taskwait
+
+    return x + y;
+}
+
+#pragma omp parallel
+{
+    #pragma omp single
+    result = fib(10);
+}
