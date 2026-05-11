@@ -13,8 +13,6 @@ void genData(float* _data)
 
 int main()
 {
-	double start_time, end_time;
-
 	float* Data=(float*)malloc(sizeof(float)*NUM_ELEMENTS);
 	genData(Data);
 
