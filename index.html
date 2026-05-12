@@ -187,5 +187,53 @@
 		<li>  parallel merge Sort (<a href="./src/parallel_mergesort.c">parallel_mergesort.c</a> )
 		<li> <a href="./mergesort.pdf">merge sort algorithm</a>
 		</ul>
-	</ul>	
+</ul>	
+
+    <li> <a href="./multicore07-1.ppt">Lecture 7-1: CUDA Introduction</a> 
+	<ul>
+	<li> How to program/run CUDA C/C++ in Google Colaboratory (<a href="./colab_example.txt">Follow this link</a>)
+	<li> <a href="./CUDASetting.pdf">CUDA Install for Visual Studio Users(in Korean)</a>
+	<li> CUDA Install: <a href="https://developer.nvidia.com/cuda-downloads"> CUDA downloads</a> -> try compiling and executing <a href="http://docs.nvidia.com/cuda/cuda-samples/#axzz30zzRw6Jc">CUDA sample codes</a>. (try <a href="http://docs.nvidia.com/cuda/cuda-samples/#simpleprintf">simplePrintf example</a>)
+	<li> <a href="https://developer.nvidia.com/cuda-gpus">CUDA GPUs</a>
+	<li> <a href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capabilities">CUDA Compute Capabilities</a>
+	<li> <a href="http://stackoverflow.com/questions/15669841/cuda-hello-world-printf-not-working-even-with-arch-sm-20">printf in CUDA</a>
+	<li> <a href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html">CUDA C Programming Guide</a> (<a href="http://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf">PDF</a>)
+	<li> <a href="http://stackoverflow.com/questions/4391162/cuda-determining-threads-per-block-blocks-per-grid">How to determine grid/block size</a>
+	<li> <a href="https://en.wikipedia.org/wiki/Nvidia_CUDA_Compiler">NVCC (NVidia CUDA Compiler)</a>
+		<ul> 
+		<li> a proprietary compiler by Nvidia intended for use with CUDA. CUDA code runs on both the CPU and GPU. NVCC separates these two parts and sends host code (the part of code which will be run on the CPU) to a C compiler like GCC or Intel C++ Compiler (ICC) or Microsoft Visual C++ Compiler, and sends the device code (the part which will run on the GPU) to the GPU. 
+		<li> Any source file containing CUDA language extensions (.cu) must be compiled with nvcc.
+		</ul>
+	</ul>
+	<li> <a href="./GTC.pdf"> Lecture 7-2: CUDA Programming Slides(NVIDIA)</a> 
+	<ul>
+		<li><a href="./printf.cu">printf.cu</a>
+		<li><a href="./block_index.cu">block_index.cu</a>
+		<li><a href="./vector_add.cu">vector_add.cu</a>
+		<li><a href="./measure_time.cu">measure_time.cu</a>
+		<li> <a href="./src/stencil.cu">stencil.cu</a>
+	</ul>
+	<li> <a href="./multicore07-3.ppt">Lecture 7-3: CUDA programming</a> 
+	<ul>
+		<li> <a href="./multmatrix.cu">multmatrix.cu</a>
+		<li> <a href="./multmatrix_arbitrarysize.cu">multmatrix_arbitrarysize.cu</a> : handles matrices with arbitrary size (another version: <a href="./src/mat.cu">mat.cu</a>)
+	</ul>
+	<li> <a href="https://docs.nvidia.com/cuda/thrust/index.html">Programming with Thrust parallel library (from NVIDIA)</a> (<a href="https://docs.nvidia.com/cuda/pdf/Thrust_Quick_Start_Guide.pdf">PDF file</a>) - Lecture Video is available in our course page of CAU eclass system. Please watch the lecture video.
+	<ul>
+		<li> <a href="http://www.sie.es/wp-content/uploads/2015/12/Intro-to-Thrust-Parallel-Algorithms-Library.pdf"> Thrust: Parallel Algorithms Library</a>
+		<li> Thrust Example Code: 
+			<a href="./thrust_ex1.cu">thrust_ex1.cu</a>, 
+			<a href="./thrust_ex2.cu">thrust_ex2.cu</a>, 
+			<a href="./thrust_ex3.cu">thrust_ex3.cu</a>, 
+                        <a href="./trans_reduce.cu">trans_reduce.cu (example of transformation, reduction, prefix-sum)</a>
+		<li> Thrust
+		<ul>
+		<li> released as part of CUDA toolkit
+		<li> Library for High-Level Parallel Algorithms and Data Structures that utilize GPU based on CUDA
+		<li> Parallel Analog of C++ STL
+		<li> Productive way to program CUDA
+		</ul>
+	</ul>
+	<li> <a href="./multicore08.ppt">Lecture 8-1: Parallel Algorithms - Sorting</a> 
+		
 </ul>
