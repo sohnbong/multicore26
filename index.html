@@ -207,6 +207,16 @@
 		<li> a proprietary compiler by Nvidia intended for use with CUDA. CUDA code runs on both the CPU and GPU. NVCC separates these two parts and sends host code (the part of code which will be run on the CPU) to a C compiler like GCC or Intel C++ Compiler (ICC) or Microsoft Visual C++ Compiler, and sends the device code (the part which will run on the GPU) to the GPU. 
 		<li> Any source file containing CUDA language extensions (.cu) must be compiled with nvcc.
 		</ul>
+	<li> Unified Memory
+		<ul>
+			<li> cudaMallocManaged
+				<ul>
+					<li> allocates buffers which can be accessed from either CPU or GPU. 
+					<li> can be deallocated using "cudaFree"	
+					<li> NVIDIA Driver manages movement of data between host and device
+				</ul>
+			<li> <a href="./vecadd_unifiedmemory.cu">vecadd_unifiedmemory.cu</a> (using unified memory), <a href="./vecadd_externalmemory.cu">vecadd_externalmemory.cu</a> (using external memory)</li>
+		</ul>
 	</ul>
 	<li> <a href="./GTC.pdf"> Lecture 7-2: CUDA Programming Slides(NVIDIA)</a> 
 	<ul>
