@@ -266,8 +266,13 @@
 		<li> Thrust
 		<ul>
 		<li> released as part of CUDA toolkit
-		<li> Library for High-Level Parallel Algorithms and Data Structures that utilize GPU based on CUDA
-		<li> Parallel Analog of C++ STL (vector operations such as transform, reduce, inclusive_scan (prefix-sum), sort, etc.)
+		<li> C++ Template Library for High-Level Parallel Algorithms and Data Structures that utilize GPU based on CUDA
+		<li> Parallel Analog of (mimics) C++ STL 
+			<ul>
+			<li> Containers (thrust::host_vector, thrust::device_vector) + Algorithms (sorting, transformation, reduction, prefix-sum)</li>
+			<li> The vector containers automatically handle memory allocation and deallocation.  </li>
+			<li> Copying data between the CPU and GPU is as simple as an assignment operator (=). </li>
+			</ul>
 		<li> Productive way to program CUDA
 		</ul>
 	</ul>
