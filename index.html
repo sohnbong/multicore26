@@ -7,6 +7,7 @@
 <ul>
 	<li> <a href="./multicore26_proj4.pdf">Project 4 (Due: 11:59pm, June 15)</a>: submission through e-Class is required.
 	<ul>
+		<li> For CUDA/Thrust experimentation, compile with the optimization flag: "> nvcc -O2 thrust_sort.cu" </li>
 		<li>Google Colab</a>
 		<ul>
 		<li> How to edit/compile/run CUDA C/C++ code in Google Colaboratory 
@@ -256,11 +257,12 @@
 	<li> Programming with Thrust parallel library (from NVIDIA)(<a href="https://docs.nvidia.com/cuda/archive/9.1/pdf/Thrust_Quick_Start_Guide.pdf">PDF file</a>) 
 	<ul>
 		<li> <a href="http://www.sie.es/wp-content/uploads/2015/12/Intro-to-Thrust-Parallel-Algorithms-Library.pdf"> Thrust: Parallel Algorithms Library</a>
-		<li> Thrust Example Code: 
+		<li> Thrust Example Code:  
 			<a href="./thrust_ex1.cu">thrust_ex1.cu</a>, 
 			<a href="./thrust_ex2.cu">thrust_ex2.cu</a>, 
 			<a href="./thrust_ex3.cu">thrust_ex3.cu</a>, 
             <a href="./trans_reduce.cu">trans_reduce.cu</a> (example of transformation, reduction, prefix-sum)
+			<a href="./thrust_sort.cu">thrust_sort.cu</a> (compile with optimization: "nvcc -O2 thrust_sort.cu")
 		<li> Thrust
 		<ul>
 		<li> released as part of CUDA toolkit
